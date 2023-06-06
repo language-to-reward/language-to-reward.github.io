@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>RT-1: Robotics Transformer</title>
+    <title>Language to Rewards for Robotic Skill Synthesis</title>
 
-    <meta name="description" content="RT-1: Robotics Transformer">
+    <meta name="description" content="Language to Rewards for Robotic Skill Synthesis">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <base href="/"> -->
@@ -19,15 +19,15 @@
     <meta property="og:image:width" content="682">
     <meta property="og:image:height" content="682">
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://robotics-transformer.github.io/"/>
-    <meta property="og:title" content="RT-1: Robotics Transformer" />
-    <meta property="og:description" content="Project page for RT-1: Robotics Transformer." />
+    <meta property="og:url" content="https://language-to-reward.github.io/"/>
+    <meta property="og:title" content="Language to Rewards for Robotic Skill Synthesis" />
+    <meta property="og:description" content="Project page for Language to Rewards for Robotic Skill Synthesis." />
 
         <!--TWITTER-->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="RT-1: Robotics Transformer" />
-    <meta name="twitter:description" content="Project page for RT-1: Robotics Transformer." />
-    <meta name="twitter:image" content="https://robotics-transformer.github.io/img/rt1-teaser.jpeg" />
+    <meta name="twitter:title" content="Language to Rewards for Robotic Skill Synthesis" />
+    <meta name="twitter:description" content="Project page for Language to Rewards for Robotic Skill Synthesis." />
+    <!-- <meta name="twitter:image" content="https://language-to-reward.github.io/img/rt1-teaser.jpeg" /> -->
 
 
 <!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
@@ -74,13 +74,13 @@
     <div class="container" id="main">
         <div class="row">
             <h2 class="col-md-12 text-center">
-                <strong><font size="+6">RT-1: Robotics Transformer</font></strong> </br> for Real-World Control at Scale </br> 
+                <strong><font size="+4">Language to Rewards for Robotic Skill Synthesis</font></strong>  
                 <!--<small>
                     CoRL 2021
                 </small>-->
             </h2>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-12 text-center">
                 <ul class="list-inline">
                 <br>
@@ -103,20 +103,20 @@
                     
                 </ul>
             </div>
-        </div>
+        </div> -->
 
 
         <div class="row">
                 <div class="col-md-4 col-md-offset-4 text-center">
                     <ul class="nav nav-pills nav-justified">
                         <li>
-                            <a href="assets/rt1.pdf">
+                            <a href="assets/l2r.pdf">
                             <image src="img/paper_small2.png" height="60px">
                                 <h4><strong>Paper</strong></h4>
                             </a>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <a href="https://youtu.be/UuKAp9a6wMs">
                             <image src="img/youtube_icon.png" height="60px">
                                 <h4><strong>Video</strong></h4>
@@ -133,7 +133,7 @@
                             <image src="img/github.png" height="60px">
                                 <h4><strong>Code</strong></h4>
                             </a>                   
-                        </li> 
+                        </li>  -->
                     </ul>
                 </div>
         </div>
@@ -145,31 +145,27 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <p style="text-align:center;">
-        	    	<video id="v0" width="100%" playsinline autoplay muted loop controls>
+        	    	<!-- <video id="v0" width="100%" playsinline autoplay muted loop controls>
                        <source src="img/rt1_mosaic_comp.mp4" type="video/mp4">
-                   </video>
+                   </video> -->
                 </p>
                 <h3>
                     Abstract
                 </h3>
                 <p class="text-justify">
-By transferring knowledge from large, diverse, task-agnostic datasets, modern machine learning models can enable solving specific downstream tasks either zero-shot or with small task-specific datasets to a high level of performance. 
-While this capability has been demonstrated in other fields such as computer vision, natural language processing or speech recognition, it remains to be shown in robotics, where the generalization and fine-tuning capabilities of the models are particularly critical due to the difficulty of collecting real-world robotic data.
-We argue that one of the keys to the success of such general robotic models lies with open-ended task-agnostic training, combined with high-capacity architectures that can absorb all of the diverse, robotic data.
-In this paper, we present a model class, dubbed Robotics Transformer, that exhibits promising scalable, pre-trained model properties.
-We verify our conclusions in a comprehensive study of different model classes and their ability to generalize as a function of the data size, model size, and data diversity based on a large-scale data collection on real robots performing real-world tasks.
+                    Large language models (LLMs) have demonstrated exciting progress1in acquiring diverse new capabilities through in-context learning,  ranging from2logical reasoning to code-writing.  Robotics researchers have also explored using3LLMs to advance the capabilities of robotic control.   However,  since low-level4robot actions are hardware-dependent and underrepresented in LLM training cor-5pora, existing efforts in applying LLMs to robotics have largely treated LLMs as6semantic planners or relied on human-engineered control primitives to interface7with the robot. On the other hand, reward functions are shown to be flexible rep-8resentations that can be optimized for control policies to achieve diverse tasks.9Our key insight is that just as LLMs can generate code or high-level task plans10from language instructions, their rich context enables specifying flexible reward11functions.   In this work,  we introduce a new paradigm that harnesses this real-12ization by utilizing LLMs to define reward parameters that can be optimized and13accomplish variety of robotic tasks. As a specific instantiation of this method, we14propose using a real-time behavior synthesis tool, MuJoCo MPC, to optimize the15robot actions based on the provided reward. Using reward as the intermediate in-16terface generated by LLMs, we can effectively bridge the gap between high-level17language instructions or corrections to low-level robot actions. Meanwhile, com-18bining this with the real-time optimizer MuJoCo MPC empowers an interactive19behavior creation experience where users can immediately observe the results and20provide feedback to the system. To systematically evaluate the performance of our21proposed method, we designed a total of 17 tasks for a simulated quadruped robot22and a dexterous manipulator robot. We demonstrate that our proposed method re-23liably tackles90%of the designed tasks, while a baseline using primitive skills as24the interface with Code-as-policies achieves50%of the tasks.
                 </p>
-             <p style="text-align:center;">
+             <!-- <p style="text-align:center;">
         	    	<video id="v0" width="100%" playsinline autoplay muted loop>
                        <source src="img/RT1-video.mp4" type="video/mp4">
                    </video>
                    RT-1 shows better performance and generalization thanks to its ability to absorb a large amount of diverse data, including robot trajectories with multiple tasks, objects and environments. Baseline approaches exhibit limited ability to fully utilize large datasets.
-                </p>
+                </p> -->
             </div>
         </div>
 
 
-	<div class="row">
+	<!-- <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
                     Video
@@ -361,6 +357,6 @@ The authors would like to acknowledge Aleksandra Faust, Andy Christiansen, Chuyu
                 </p>
             </div>
         </div>
-    </div>
+    </div> -->
 </body>
 </html>

@@ -13,16 +13,6 @@
 
     <!-- <base href="/"> -->
 
-        <!--FACEBOOK-->
-    <meta property="og:image" content="https://robotics-transformer.github.io/img/rt1-teaser.jpeg">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="682">
-    <meta property="og:image:height" content="682">
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://language-to-reward.github.io/"/>
-    <meta property="og:title" content="Language to Rewards for Robotic Skill Synthesis" />
-    <meta property="og:description" content="Project page for Language to Rewards for Robotic Skill Synthesis." />
-
         <!--TWITTER-->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Language to Rewards for Robotic Skill Synthesis" />
@@ -80,30 +70,22 @@
                 </small>-->
             </h2>
         </div>
-        <!-- <div class="row">
+        <div class="row">
             <div class="col-md-12 text-center">
                 <ul class="list-inline">
                 <br>
-                <li>Anthony Brohan</li> <li>Noah Brown</li> <li>Justice Carbajal</li> <li>Yevgen Chebotar</li> <li>Joseph Dabis</li> <li>Chelsea Finn</li> <li>Keerthana Gopalakrishnan</li> <br>
-                 <li>Karol Hausman</li> <li>Alex Herzog</li> <li>Jasmine Hsu</li> <li>Julian Ibarz</li> <li>Brian Ichter</li> <li>Alex Irpan</li> <li>Tomas Jackson</li> <br>
-                  <li>Sally Jesmonth</li> <li>Nikhil Joshi</li> <li>Ryan Julian</li> <li>Dmitry Kalashnikov</li> <li>Yuheng Kuang</li> <li>Isabel Leal </li> <li>Kuang-Huei Lee</li> <br>
-                  <li>Sergey Levine</li> <li>Yao Lu</li> <li>Utsav Malla</li> <li>Deeksha Manjunath</li> <li>Igor Mordatch</li> <li>Ofir Nachum</li> <li>Carolina Parada</li> <br>
-                 <li>Jodilyn Peralta</li> <li>Emily Perez</li> <li>Karl Pertsch</li> <li>Jornell Quiambao</li> <li>Kanishka Rao</li> <li>Michael Ryoo</li> <li>Grecia Salazar</li> <br>
-                 <li>Pannag Sanketi</li> <li>Kevin Sayed</li> <li>Jaspiar Singh</li> <li>Sumedh Sontakke</li> <li>Austin Stone</li> <li>Clayton Tan</li> <li>Huong Tran</li>  <br>
-                 <li>Vincent Vanhoucke</li> <li>Steve Vega</li> <li>Quan Vuong</li> <li>Fei Xia</li> <li>Ted Xiao</li> <li>Peng Xu</li> <li>Sichun Xu</li> <li>Tianhe Yu</li> <li>Brianna Zitkovich</li> <br>
+                <li>Wenhao Yu</li> <li>Nimrod Gileadi</li> <li>Chuyuan Fu</li> <li>Sean Kirmani</li> <li>Kuang-Huei Lee</li> <br>
+                 <li>Montse Gonzalez Arenas</li> <li>Hao-Tien Lewis Chiang</li> <li>Tom Erez</li> <li>Leonard Hasenclever</li> <br>
+                  <li>Brian Ichter</li> <li>Ted Xiao</li> <li>Peng Xu</li> <li>Andy Zeng</li> <li>Tingnan Zhang</li> <br>
+                  <li>Dorsa Sadigh</li> <li>Jie Tan</li> <li>Yuval Tassa</li> <li>Fei Xia</li>  <br>
                 <br>
-			<b><i> Authors listed in alphabetical order (see paper appendix for contribution statement). </i></b>
-		<br><br>
-                    <a href="http://g.co/robotics">
-                    <image src="img/rng-logo.png" height="37px"> </a>
-                    <a href="https://everydayrobots.com">
-                    <image src="img/edr-logo.png" height="40px"> </a>
-                    <a href="https://research.google/teams/brain/">   
-                    <image src="img/google-research-logo.png" height="25px"> </a> 
+		    <br><br>
+                    <a href="https://www.deepmind.com/">
+                    <image src="img/google-deepmind-logo.png" height="37px"> </a>
                     
                 </ul>
             </div>
-        </div> -->
+        </div>
 
 
         <div class="row">
@@ -116,13 +98,13 @@
                             </a>
                         </li>
 
-                        <!-- <li>
-                            <a href="https://youtu.be/UuKAp9a6wMs">
+                        <li>
+                            <a href="">
                             <image src="img/youtube_icon.png" height="60px">
                                 <h4><strong>Video</strong></h4>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="http://ai.googleblog.com/2022/12/rt-1-robotics-transformer-for-real.html">
                             <image src="img/google-ai-blog-small.png" height="60px">
                                 <h4><strong>Blogpost</strong></h4>
@@ -153,166 +135,262 @@
                     Abstract
                 </h3>
                 <p class="text-justify">
-                    Large language models (LLMs) have demonstrated exciting progress1in acquiring diverse new capabilities through in-context learning,  ranging from2logical reasoning to code-writing.  Robotics researchers have also explored using3LLMs to advance the capabilities of robotic control.   However,  since low-level4robot actions are hardware-dependent and underrepresented in LLM training cor-5pora, existing efforts in applying LLMs to robotics have largely treated LLMs as6semantic planners or relied on human-engineered control primitives to interface7with the robot. On the other hand, reward functions are shown to be flexible rep-8resentations that can be optimized for control policies to achieve diverse tasks.9Our key insight is that just as LLMs can generate code or high-level task plans10from language instructions, their rich context enables specifying flexible reward11functions.   In this work,  we introduce a new paradigm that harnesses this real-12ization by utilizing LLMs to define reward parameters that can be optimized and13accomplish variety of robotic tasks. As a specific instantiation of this method, we14propose using a real-time behavior synthesis tool, MuJoCo MPC, to optimize the15robot actions based on the provided reward. Using reward as the intermediate in-16terface generated by LLMs, we can effectively bridge the gap between high-level17language instructions or corrections to low-level robot actions. Meanwhile, com-18bining this with the real-time optimizer MuJoCo MPC empowers an interactive19behavior creation experience where users can immediately observe the results and20provide feedback to the system. To systematically evaluate the performance of our21proposed method, we designed a total of 17 tasks for a simulated quadruped robot22and a dexterous manipulator robot. We demonstrate that our proposed method re-23liably tackles90%of the designed tasks, while a baseline using primitive skills as24the interface with Code-as-policies achieves50%of the tasks.
+                    Large language models (LLMs) have demonstrated exciting progress in
+acquiring diverse new capabilities through in-context learning, ranging from logical
+reasoning to code-writing. Robotics researchers have also explored using LLMs to
+advance the capabilities of robotic control. However, since low-level robot actions are
+hardware-dependent and underrepresented in LLM training corpora, existing efforts in
+applying LLMs to robotics have largely treated LLMs as semantic planners or relied
+on human-engineered control primitives to interface with the robot. On the other hand,
+reward functions are shown to be flexible representations that can be optimized for control policies to achieve diverse tasks, while their semantic richness makes them suitable
+to be specified by LLMs. In this work, we introduce a new paradigm that harnesses this
+realization by utilizing LLMs to define reward parameters that can be optimized and
+accomplish variety of robotic tasks. Using reward as the intermediate interface generated
+by LLMs, we can effectively bridge the gap between high-level language instructions
+or corrections to low-level robot actions. Meanwhile, combining this with a real-time
+optimizer, MuJoCo MPC, empowers an interactive behavior creation experience where
+users can immediately observe the results and provide feedback to the system. To
+systematically evaluate the performance of our proposed method, we designed a total of
+17 tasks for a simulated quadruped robot and a dexterous manipulator robot. We demonstrate that our proposed method reliably tackles 90% of the designed tasks, while a
+baseline using primitive skills as the interface with Code-as-policies achieves 50% of the
+tasks. We further validated our method on a real robot arm where complex manipulation
+skills such as non-prehensile pushing emerge through our interactive system.
                 </p>
-             <!-- <p style="text-align:center;">
-        	    	<video id="v0" width="100%" playsinline autoplay muted loop>
-                       <source src="img/RT1-video.mp4" type="video/mp4">
-                   </video>
-                   RT-1 shows better performance and generalization thanks to its ability to absorb a large amount of diverse data, including robot trajectories with multiple tasks, objects and environments. Baseline approaches exhibit limited ability to fully utilize large datasets.
-                </p> -->
             </div>
         </div>
 
 
-	<!-- <div class="row">
+	    <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
                     Video
                 </h3>
                 <div class="text-center">
                     <div style="position:relative;padding-top:56.25%;">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/UuKAp9a6wMs" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                        <iframe width="560" height="315" src="" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
                     </div>
                 </div>
             </div>
         </div>
 
-
+     
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
             	<br>
                 <h3>
-                    Approach
+                    Approach Overview
                 </h3>
+                <p style="text-align:center;">
+                    <image src="img/l2r_overview.png" class="img-responsive">
+                    </p>
                 <p class="text-justify">
-                In the past few years, we have seen powerful machine learning models that achieve significant generalization capabilities by absorbing large amounts of data. For example, large language models such as PaLM or GPT-3 can generalize to many tasks such as language understanding, code completion or arithmetic, especially as their number of parameters increase.
-Importantly, these large models have the ability to effectively absorb large amounts of diverse data. In the case of large language models that data being text, which allows them to discover patterns and generalize between the observed datapoints. 
-Can we find similar data-absorbent models for robotics? Does such a model enjoy the benefits of scale seen in other domains? And does it exhibit effective zero-shot generalization to new tasks, environments, and objects?
-<br><br>
-To investigate these questions, we present Robotics Transformer, RT-1, a Transformer-based model that we train a large dataset of multi-task demonstrations and showcase how it generalizes to new tasks, how it is robust to changes in the environment and how it allows to execute long-horizon instructions. We also demonstrate its capabilities to effectively absorb data from very different domains such as simulation or different robots.
-                <p style="text-align:center;">
-        	    <image src="img/rt1_teaser.png" class="img-responsive">
+                    The recent rapid progress in Large Language Models (LLMs) has inspired notable developments in leveraging LLMs to drive robot behaviors:
+                    from step-by-step planning, goal-oriented dialogue, to robot-code-writing agents. While these methods impart new modes of compositional
+                    generalization, they focus on using language to concatenate together new behaviors from an existing library of control primitives that are 
+                    either manually-engineered or learned a priori. On the other hand, leveraging LLMs to directly modulate low-level robot behavior still remains an open problem
+                    due to that low-level robot actions are hardware-dependent and underrepresented in LLM training corpora.
+                    <br>
+                    In this work, we aim to develop an interactive system that leverages the power of LLMs to acquire low-level robotic skills 
+                    Our proposed system consists of two key components: i) a Reward Translator, built uponpre-trained Large Language Models (LLMs) [10], 
+                    that interacts with and understands user intents andmodulates all reward parametersψand weightsw, and ii) a Motion Controller, 
+                    based on MuJoCo MPC, that takes the generated reward and interactively optimize the optimal action sequence.
                 </p>
-<br>
-How does Robotics Transformer model work? RT-1 takes a short sequence of images and a task description in natural language as input and outputs an action for the robot to execute at each time step.
-To achieve this, our architecture leverages several elements: first, the images and text are processed via an ImageNet-pretrained convolutional neural network (EfficientNet) conditioned on a pretrained embedding of the instruction via FiLM layers to extract visual features that are relevant to the task at hand. This is then followed by a Token Learner module to compute a compact set of tokens, and finally a Transformer to attend over these tokens and produce discretized action tokens.
-The actions consist of seven dimensions for the arm movement (x, y, z, roll, pitch, yaw, opening of the gripper), three dimensions for base movement (x, y, yaw) and an extra discrete dimension to switch between three modes: controlling the arm, the base, or terminating the episode.
-RT-1 performs closed-loop control and commands actions at 3Hz until it either yields a <i>terminate</i> action or runs out of pre-set number of time steps.
-<br><br>
-                <p style="text-align:center;">
-        	    <video id="arch" width="100%" playsinline="" autoplay="" muted="" loop="">
-                       <source src="img/rt_1_teaser_animation_new_comp.mp4" type="video/mp4">
-                   </video>
-                </p>
- </div>
+
+            </div>
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    Data
+                    Reward Translator
                 </h3>
-		<p class="text-justify">
-To test RT-1 in the real world, we collected a large dataset of real-world robotic experiences that consists of over 130k episodes, which contain over 700 tasks, and was collected with a fleet of 13 robots over 17 months.
-<br><br>
-The current set of skills includes picking, placing, opening and closing drawers, getting items in and out drawers, placing elongated items up-right, knocking them over, pulling napkins and opening jars. 
-The list of instructions was designed to show multiple skills with many objects to test aspects of RT-1 such as generalization to new instructions and ability to perform many skills. 
-The entire process of adding tasks and data is described in detail in the paper.
-Since we do not make any assumptions about particular skills when adding new instructions, the system is easily extendable, and we can continuously provide more diverse data to improve its capabilities.
+            <p style="text-align:center;">
+                <image src="img/reward_translator.png" class="img-responsive">
+            </p>
+                <p class="text-justify">
+                    We build the Reward Translator based on LLMs to map user interactions to reward functions corresponding to the desired robot motion.
+                    As reward tuning is highly domain-specific and requires expert knowledge, it is unsurprising that LLMs trained on generic language datasets
+                    cannot directly generate a reward for a specific hardware. Instead, we explore the in-context learning ability of LLMs to achieve this goal.
+                    <br>
+                    More concretely, we decompose the problem of language to reward into two stages: motion description and reward coding. During motion description stage,
+                    we design a prompt to instruct an LLM to interpret and expand the user input into a natural language description of the desired robot motion following a pre-defined template. 
+                    While during the reward coding stage, we use another prompt to instruct the LLM to translate the motion description into reward specifying code.
+                </p>
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Motion Controller
+                </h3>
+         
+                <p class="text-justify">
+                The Motion Controller needs to map the reward function generated by the Reward Translatorto low-level robot actions that maximize the accumulated reward specified by the Reward Translator.
+                There are a few possible ways to achieve this, including using reinforcement learning (RL), offline trajectory optimization, or, as in this work, receding horizon trajectory optimization, i.e., model predictive control (MPC). 
+                Specifically, we use an open-source implementation based on the MuJoCo simulator, MJPC. 
+                At each control step, MJPC plans a sequence of optimized actions and sends to the robot. The robot applies the action corresponding to its current timestamp, advances to the next step, and sends the updated robot states to the MJPC planner to initiate the next planning cycle. 
+                The frequent re-planning in MPC empowers its robustness to uncertainties in the system and, importantly, enables interactive motion synthesis and correction. 
+                    </p>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
                     Results
                 </h3>
-		<p class="text-justify">
-We test generalization capabilities of our model on multiple axes such as previously unseen instructions, robustness to the number of distractor objects (first row in the image below), robustness to different backgrounds and environments such as new, previously unseen kitchens (second row), and realistic scenarios that combine all these elements.
-		
-		<p style="text-align:center;">
-        	    <image src="img/evals.png" class="img-responsive">        	   
-                </p>
-		We first compare RT-1 to other previously published imitation-learning-based baselines such as Gato and BC-Z (including a BC-Z with a similar number of parameters as RT-1 that we call BC-Z XL).
-		</p>
-		<p class="text-justify">
-		Across each category, we find that RT-1 outperforms the prior models significantly.
-On seen tasks, RT-1 is able to perform 97% of the more than 700 instructions successfully, which is 25% more than BC-Z and 32% more than Gato.
-On unseen tasks, RT-1 shows it is capable of generalizing to novel instructions, performing 76% of the never-before-seen instructions, 24% more than the next best baseline. 
-On distractors and backgrounds, we find that RT-1 is quite robust, successfully executing 83% of the distractor robustness tasks and 59% of the background robustness tasks (36% and 18% higher than the next best alternative, respectively).
-	        </p>
-                <p style="text-align:center;">
-                    <image src="img/main_baselines.png"  class="img-responsive" height="600px">
-                </p>
-		
-		<p class="text-justify">
-		Next, we test whether our method generalizes enough across all the different axes that we evaluated previously to be deployed in a real kitchen, which poses multiple distribution shifts all at once such as new tasks combinations, object distractors as well as a novel environment.
-		The office kitchen involves a dramatic shift from the training environment and we categorize tasks across these scenarios with varying levels of generalization: L1 for generalization to the new counter-top layout and lighting conditions, L2 for additionally generalization to unseen distractor objects, L3 for additional generalization to drastically new task settings, new task objects or objects in unseen locations such as near a sink. The three levels that correspond to three tasks of restocking, preparing a snack and fetching a lost object in the real kitchen.
-		<br><br>
-		Simiarly to the previous experiment, RT-1 generalizes better than the baselines. Gato generalizes fairly well at the first level but it performs significantly drops for the more difficult generalization scenarios. BC-Z and its XL equivalent perform fairly well at L2 level and better than Gato at L3 but they are still not at the generalization level of RT-1. 
-	        </p>
-			
-		  <p style="text-align:center;">
-                    <image src="img/kanishka.png"  class="img-responsive" height="450px">
-                </p>
-			  
-		<p> Given these initial results, we try to push RT-1 further by incorporating data from different data sources such as simulation (green box below) or data collected by another robot (red box below). 
-		 <p style="text-align:center;">
-                    <image src="img/multi_simple.png"  class="img-responsive" height="600px">
-                </p>
-			  
+         
                 <p class="text-justify">
-		    Our results indicate that RT-1’s absorption properties also include the ability to acquire new skills by observing other simulation or robots’ experiences without sacrificing the performance of the original tasks. In the left plot below, we see that by mixing real and sim data, the generalization capabilities of the robot improve significantly when evaluated on objects seen only in simulation (and they only drop by 2% on all other objects).
-		    <br>
-		    Even more interestingly, we observe that mixing our original dataset with data from another robot (in this the Kuka IIWA robot) improves generalization as well: the 22% accuracy seen when training with our data alone jumps to 39% when RT-1 is trained on both bin-picking data from Kuka and the existing data. That’s almost a 2x improvement (17%) that shows an effective transfer from a different robot morphology and presents an exciting avenue for future work where we combine many more multi-robot datasets to enhance the robot capabilities.
-		</p>
-			
-        	 <p style="text-align:center;">
-                    <image src="img/multi_results.png"  class="img-responsive" height="600px">
+                    We evaluate our approach on two simulated robotic systems: a quadruped robot, and a dexterous robot manipulator.
+                    We design a diverse set of tasks for each robot to demonstrate the capability of our proposed system. Some examples of the resulting
+                    robot motions can be found below. 
                 </p>
-                
-                Given these results, we put everything together to evaluate the ability of RT-1 to execute long-horizon instructions in the <a href="https://say-can.github.io/">(PaLM-)SayCan framework</a>. We implement two other baselines for comparison: (1) SayCan with Gato, and (2) SayCan with BC-Z. We evaluate all three policies in two real kitchens. Kitchen2 constitutes a much more challenging generalization scene than Kitchen1; the mock kitchen used to gather most of the training data was modeled after Kitchen1.
-                 <p style="text-align:center;">
-                    <image src="img/saycan_table.png"  class="img-responsive" height="600px">
-                </p>
-                
-
-		<p class="text-justify">
-		We see that RT-1 achieves a 67% execution success rate in Kitchen1, and is better than other baselines. Due to the generalization difficulty presented by the new unseen kitchen, the performance of SayCan with Gato and SayCan with BCZ shapely falls, while RT-1 does not show a visible drop.
-		<br><br>
-		
-		Below, we show a few example videos showing how PaLM-SayCan-RT1 can be used to plan and execute ultra-long horizon tasks, with as many as 50 steps. 
-		The first task "Bring me the rice chips from the drawer" is executed in an office kitchen that the robot has never seen before.
-		</p>
-		<p style="test-align:center;">
-					<video id="v0" width="100%" playsinline muted loop controls>
-                       <source src="img/saycan_rt1_demo1_comp.mp4" type="video/mp4">
-                   </video>		
-        </p>
-		<p class="text-justify">
-
-         For the second task "Roses are red, violets are blue, bring me the rice chips from the drawer, and a napkin too." the execution 
-			and planning process are shown in the video below.
-		</p>
-        <p style="test-align:center;">
-					<video id="v0" width="100%" playsinline muted loop controls>
-                       <source src="img/saycan_rt1_demo2_comp.mp4" type="video/mp4">
-                   </video>		
-        </p>
-        <p class="text-justify">
-
-         In the next example, we show SayCan is able to plan and execute a very long-horizon task involving 50+ steps.
-		</p>
-        <p style="test-align:center;">
-					<video id="v0" width="100%" playsinline muted loop controls>
-                       <source src="img/saycan_rt1_demo3_comp.mp4" type="video/mp4">
-                   </video>		
-
-	    </div>
+            </div>
         </div>
-            
-       
+
+        <div class="row">  
+            <div class="col-md-4">
+            <p style="text-align:center;">
+              <video width="100%" height="100%" controls autoplay loop muted>
+                <source src="videos/sim/face_sunset.mp4" type="video/mp4">
+              </video>
+              <p class="text-justify">
+                User instruction: It's late in the afternoon, make the robot head towards the sunset.
+              </p>
+            </p>
+            </div>
+            <div class="col-md-4">
+              <p style="text-align:center;">
+              <video width="100%" height="100%" controls autoplay loop muted>
+                <source src="videos/sim/sit.mp4" type="video/mp4">
+              </video>
+              <p class="text-justify">
+                User instruction: Sit like a dog.
+              </p>
+              </p>
+            </div>   
+            <div class="col-md-4">
+              <p style="text-align:center;">
+              <video width="100%" height="100%" controls autoplay loop muted>
+                <source src="videos/sim/biped.mp4" type="video/mp4">
+              </video>
+              <p class="text-justify">
+                User instruction: Stand up on two back feet like a human.
+              </p>
+              </p>
+            </div> 
+            <div class="col-md-4">
+                <p style="text-align:center;">
+                <video width="100%" height="100%" controls autoplay loop muted>
+                  <source src="videos/sim/bowl2.mp4" type="video/mp4">
+                </video>
+                <p class="text-justify">
+                  User instruction: Flp the bowl.
+                </p>
+                </p>
+            </div> 
+            <div class="col-md-4">
+                <p style="text-align:center;">
+                <video width="100%" height="100%" controls autoplay loop muted>
+                  <source src="videos/sim/open_faucet.mp4" type="video/mp4">
+                </video>
+                <p class="text-justify">
+                  User instruction: Turn on the faucet.
+                </p>
+                </p>
+            </div> 
+            <div class="col-md-4">
+                <p style="text-align:center;">
+                <video width="100%" height="100%" controls autoplay loop muted>
+                  <source src="videos/sim/upright_box.mp4" type="video/mp4">
+                </video>
+                <p class="text-justify">
+                  User instruction: Make the box upright.
+                </p>
+                </p>
+            </div> 
+      </div>
+        
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p class="text-justify">
+                    We further compare our method against two baselines: 1) a Reward Coder only baseline
+                    where an LLM directly map user instructions to reward code instead of going through the Motion Descriptor, and 2) a Code-as-Policies baseline
+                    where the LLM generates a plan for the robot motion using a set of pre-defined robot primitive skills instead of reward functions. 
+                    For the Code-as-Policies (CaP) baseline, we design the primitive skills based on common commands available to the robot.
+                    <br>
+                    As shown below, our proposed approach achieves notably higher success rate for 11/17 task categories and comparable performance for the rest tasks,
+                     showing the effectiveness and reliability of the proposed method.
+                </p>
+                <p style="text-align:center;">
+                    <image width="90%" src="img/success_rate.png" class="img-responsive">
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+         
+                <p class="text-justify">
+                    We further showcase two examples where we teach the robot to perform complex tasks through multiple rounds of interactions.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">  
+            <div class="col-md-6">
+            <p style="text-align:center;">
+              <video width="100%" height="100%" controls autoplay loop muted>
+                <source src="videos/sim/moonwalk_fixed_cam.mp4" type="video/mp4">
+              </video>
+              <p class="text-justify">
+                Instruction 1: Make the robot stand upright on two back feet like a human. <br>
+                Instruction 2: Good, you actually don't need to keep the front paws at certain height, just leave it to the controller. <br>
+                Instruction 3: Good, now make the robot do a moonwalk. <br>
+                Instruction 4: Moon walk means the robot should walk backward while the feet swings as if they are moving forward. Correct your answer.
+            </p>
+            </p>
+            </div>
+            <div class="col-md-6 ">
+              <p style="text-align:center;">
+              <video width="100%" height="100%" controls autoplay loop muted>
+                <source src="videos/sim/apple_drawer.mp4" type="video/mp4">
+              </video>
+              <p class="text-justify">
+                Instruction 1: Open the drawer. <br>
+                Instruction 2: Good, now put the apple inside the drawer while keep it open. <br>
+                Instruction 3: Good, now release the apple and move hand away. <br>
+                Instruction 4: Now close the drawer.
+              </p>
+              </p>
+            </div>   
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <br>
+            <h3>
+                Validation on real hardware.
+            </h3>
+            <p class="text-justify">
+                We implement a version of our method onto a mobile manipulator. 
+                We detect objects in image-space using an open-vocabulary detector: F-VLM. 
+                We extract the associated points from point cloud behind the mask and perform outlier 
+                rejection for points that might belong to the background. From a birds-eye view, we fit 
+                a minimum volume rectangle and take the extremes to determine the extent in the z-axis.
+                We demonstrate sim-to-real transfer on two tasks: object pushing and object grasping. 
+                Our system is able to generate relevant reward code and the Mujoco MPC is able to synthesize the pushing and grasping motion. 
+            </p>
+            <p style="text-align:center;">
+                <video width="100%" height="100%" controls autoplay loop muted>
+                  <source src="videos/real/l2r_real.mp4" type="video/mp4">
+                </video>
+            </p>
+
+        </div>
+    </div>
+        
 
          <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -321,28 +399,10 @@ On distractors and backgrounds, we find that RT-1 is quite robust, successfully 
                 </h3>
                 <div class="form-group col-md-10 col-md-offset-1">
                     <textarea id="bibtex" class="form-control" readonly>
-@inproceedings{rt12022arxiv,
-    title={RT-1: Robotics Transformer for Real-World Control at Scale},
-    author={Anthony	Brohan and  Noah Brown and  Justice Carbajal and  Yevgen Chebotar and  Joseph Dabis and  Chelsea Finn and  Keerthana Gopalakrishnan and  Karol Hausman and  Alex Herzog and  Jasmine Hsu and  Julian Ibarz and  Brian Ichter and  Alex Irpan and  Tomas Jackson and  Sally Jesmonth and  Nikhil Joshi and  Ryan Julian and  Dmitry Kalashnikov and  Yuheng Kuang and  Isabel Leal and  Kuang-Huei Lee and  Sergey Levine and  Yao Lu and  Utsav Malla and  Deeksha Manjunath and  Igor Mordatch and  Ofir Nachum and  Carolina Parada and  Jodilyn Peralta and  Emily Perez and  Karl Pertsch and  Jornell Quiambao and  Kanishka Rao and  Michael Ryoo and  Grecia Salazar and  Pannag Sanketi and  Kevin Sayed and  Jaspiar Singh and  Sumedh Sontakke and  Austin Stone and  Clayton Tan and  Huong Tran and  Vincent Vanhoucke and Steve Vega and  Quan Vuong and  Fei Xia and  Ted Xiao and  Peng Xu and  Sichun Xu and  Tianhe Yu and  Brianna Zitkovich},
-    booktitle={arXiv preprint arXiv:2212.06817},
-    year={2022}
-}</textarea>
+TODO: add after arxiv version go live</textarea>
                 </div>
             </div>
              
-        </div>
-
-
-         <div class="row">
-            <div id="open-source" class="col-md-8 col-md-offset-2">
-                <h3>
-                    Open Source
-                </h3>
-              We open source the RT-1 model <a href="https://github.com/google-research/robotics_transformer">[here]. </a>
-              We also open source the data used in RT-1 <a href="https://console.cloud.google.com/storage/browser/gresearch/rt-1-data-release">[here]. </a>
-              <p style="text-align:center;">
-                </p>
-            </div>
         </div>
 
         <div class="row">
@@ -351,12 +411,11 @@ On distractors and backgrounds, we find that RT-1 is quite robust, successfully 
                     Acknowledgements
                 </h3>
                 <p class="text-justify">
-The authors would like to acknowledge Aleksandra Faust, Andy Christiansen, Chuyuan Fu, Daniel Kappler, David Rendleman, Eric Jang, Jessica Gomez, Jessica Lin, Jie Tan, Josh Weaver, Justin Boyd, Krzysztof Choromanski, Matthew Bennice, Mengyuan Yan, Mrinal Kalakrishnan, Nik Stewart, Paul Wohlhart, Peter Pastor, Pierre Sermanet, Wenlong Lu, Zhen Yu Song, Zhuo Xu, and the greater teams at Robotics at Google and Everyday Robots for their feedback and contributions.
-                    <br><br>
+TODO: add acknowledgements                    <br><br>
                 The website template was borrowed from <a href="http://jonbarron.info/">Jon Barron</a>.
                 </p>
             </div>
-        </div>
-    </div> -->
+</div>
+</div> 
 </body>
 </html>

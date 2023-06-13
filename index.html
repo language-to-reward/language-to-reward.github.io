@@ -26,15 +26,18 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css"> -->
     <link rel="stylesheet" href="css/app.css">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script>hljs.highlightAll();</script>
     
     <script src="js/app.js"></script>
 <!-- Google tag (gtag.js) -->
@@ -234,7 +237,7 @@ skills such as non-prehensile pushing emerge through our interactive system.
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
                     Results
@@ -378,7 +381,86 @@ execute_plan()
                 </p>
             </div> 
       </div>
-        
+         -->
+
+      <div class="row" id="demo">
+        <div class="col-md-8 col-md-offset-2 col-xs-12">
+            <h3>
+                Results
+            </h3>
+            <p>
+                <p class="text-justify">
+                    We evaluate our approach on two simulated robotic systems: a quadruped robot, and a dexterous robot manipulator.
+                    We design a diverse set of tasks for each robot to demonstrate the capability of our proposed system. Some examples of the resulting
+                    robot motions can be found below. 
+                </p>
+            </p>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <img src="videos/sim/bowl2.png" width="100%" alt=" User instruction: Flp the bowl. [sep]import numpy as np\\reset_reward()  # This is a new task so reset reward; otherwise we don't need it\\set_l2_distance_reward('palm', 'bowl')\\set_obj_orientation_reward('bowl', np.deg2rad(180))\\execute_plan(2)" onclick="populateDemo(this);">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <img src="videos/sim/open_faucet.png" width="100%" alt="User instruction: Turn on the faucet.[sep]import numpy as np\\reset_reward() # This is a new task so reset reward; otherwise we don't need it\\set_l2_distance_reward('palm', 'faucet_handle')\\set_joint_fraction_reward('faucet', 1) # Open the faucet\\execute_plan(4)" onclick="populateDemo(this);">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <img src="videos/sim/upright_box.png" width="100%" alt="User instruction: Make the box upright.[sep]import numpy as np\\reset_reward()  # This is a new task so reset reward; otherwise we don't need it\\set_l2_distance_reward('palm', 'box')\\set_obj_orientation_reward('box', np.deg2rad(90))\\execute_plan()" onclick="populateDemo(this);">
+                </div>
+            </div>
+            <p></p>
+
+            <div class="row border rounded" style="padding-top:10px; padding-bottom:10px;">
+                <div class="col-md-6">
+                    <!-- <img class="img img-responsive" id="expandedImg" style="height: 300px;" src="img/placeholder.png"> -->
+                    <video width="100%" height="100%" id="demo-video" controls autoplay loop muted>
+                        <source id="expandedImg" src="videos/sim/upright_box.mp4" type="video/mp4">
+                        <!-- <img class="img img-responsive" id="expandedImg" style="height: 300px;" src="img/placeholder.png"> -->
+                    </video>
+
+                </div>
+                <div class="col-md-6">
+                <div id="imgtext">Prompt text in gray.</div>
+                <div>
+                    <pre><code class="language-python" id="answer">L2R response shown within code block.</code></pre>
+                </div>
+
+                </div>
+                
+            </div>
+            <p></p>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <img src="videos/sim/face_sunset.png" width="100%" alt=" User instruction: It's late in the afternoon, make the robot head towards the sunset.[sep]reset_reward()\\set_torso_targets(0.3, np.deg2rad(0), np.deg2rad(0), None, (0.5, 0.0), np.pi, None)\\\\set_feet_stepping_parameters('front_left', 2.0, 0.5, 0.0, 0.1, 0.1, True)\\set_feet_stepping_parameters('back_left', 2.0, 0.5, 0.5, 0.1, 0.1, True)\\set_feet_stepping_parameters('front_right', 2.0, 0.5, 0.5, 0.1, 0.1, True)\\set_feet_stepping_parameters('back_right', 2.0, 0.5, 0.0, 0.1, 0.1, True)\\\\execute_plan()" onclick="populateDemo(this);">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <img src="videos/sim/biped.png" width="100%" alt="User instruction: Stand up on two back feet like a human.[sep]import numpy as np
+
+reset_reward()
+set_torso_targets(0.65, np.deg2rad(90), np.deg2rad(0), (0.0, 0.0), None, 0, None)
+
+set_feet_pos_parameters('front_left', 0.65, None, None)
+set_feet_pos_parameters('back_left', 0.0, None, None)
+set_feet_pos_parameters('front_right', 0.65, None, None)
+set_feet_pos_parameters('back_right', 0.0, None, None)
+
+execute_plan()" onclick="populateDemo(this);">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <img src="videos/sim/sit.png" width="100%" alt="User instruction: Sit like a dog.[sep]import numpy as np
+
+reset_reward()
+set_torso_targets(0.15, np.deg2rad(45), np.deg2rad(0), (0.0, 0.0), None, 0, None)
+
+set_feet_pos_parameters('front_left', 0.0, None, None)
+set_feet_pos_parameters('back_left', 0.0, None, None)
+set_feet_pos_parameters('front_right', 0.0, None, None)
+set_feet_pos_parameters('back_right', 0.0, None, None)
+
+execute_plan()" onclick="populateDemo(this);">
+                </div>
+            </div>
+            </div>
+            
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -486,4 +568,58 @@ TODO: add acknowledgements                    <br><br>
 </div>
 </div> 
 </body>
+
+<script>
+
+    timeoutIds = [];
+    
+    function populateDemo(imgs) {
+        // Get the expanded image
+        var expandImg = document.getElementById("expandedImg");
+        // Get the image text
+        var imgText = document.getElementById("imgtext");
+        var answer = document.getElementById("answer");
+    
+        // Use the same src in the expanded image as the image being clicked on from the grid
+        expandImg.src = imgs.src.replace(".png", ".mp4");
+        var video = document.getElementById('demo-video');
+        // or video = $('.video-selector')[0];
+        video.pause()
+        video.load();
+        video.play();
+
+        console.log(expandImg.src);
+        // Use the value of the alt attribute of the clickable image as text inside the expanded image
+        var qa = imgs.alt.split("[sep]");
+        imgText.innerHTML = qa[0];
+        answer.innerHTML = "";
+        // Show the container element (hidden with CSS)
+        expandImg.parentElement.style.display = "block";
+        for (timeoutId of timeoutIds) {
+            clearTimeout(timeoutId);
+        }
+        typeWriter(qa[1], 0, qa[0]);
+        }
+    
+    function typeWriter(txt, i, q) {
+        var imgText = document.getElementById("imgtext");
+        if (imgText.innerHTML == q) {
+        if (i < txt.length) {
+            if (txt.charAt(i) == "\\") {
+                answer.innerHTML += "\n";
+                i+=1;
+            } else {
+                answer.innerHTML += txt.charAt(i);
+            }
+            i++;
+            timeoutIds.push(setTimeout(typeWriter, 5, txt, i, q));
+        }
+        else {
+            hljs.highlightAll();
+        }
+        }
+    }
+
+    </script>
+
 </html>

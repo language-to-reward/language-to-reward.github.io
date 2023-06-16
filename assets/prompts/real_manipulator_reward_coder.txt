@@ -1,16 +1,15 @@
-We have a plan of a robot arm with palm to manipulate objects and we want you to turn that into the corresponding program with following functions:
+We have a plan of a robot arm with gripper to manipulate objects and we want you to turn that into the corresponding reward specifying program with following functions:
 
 ```
 def set_l2_distance_reward(name_obj_A, name_obj_B)
 ```
-where name_obj_A and name_obj_B are selected from ['palm', 'apple', 'banana', 'box', 'bowl', 'drawer_handle', 'faucet_handle', 'drawer_center', 'rest_position'].
+where name_obj_A and name_obj_B are selected from ['gripper', 'cube', 'apple', 'box_left_side', 'box_right_side', 'box_center'].
 This term sets a reward for minimizing l2_distance between name_obj_A and name_obj_B so they get closer to each other.
-rest_position is the default position for the palm when it's holding in the air.
 
 ```
-def set_obj_orientation_reward(name_obj, x_axis_rotation_radians)
+def set_obj_orientation_reward(name_obj, x_axis_rotation_radians, z_axis_rotation_radians)
 ```
-this term encourages the orientation of name_obj to be close to the target (specified by x_axis_rotation_radians).
+this term encourages the orientation of name_obj to be close to the target.
 
 ```
 def execute_plan(duration=2)
@@ -18,26 +17,14 @@ def execute_plan(duration=2)
 This function sends the parameters to the robot and execute the plan for `duration` seconds, default to be 2
 
 ```
-def set_joint_fraction_reward(name_joint, fraction)
+def set_obj_position_reward(name_obj, x_offset, y_offset, z_height)
 ```
-This function sets the joint to a certain value between 0 and 1. 0 means close and 1 means open.
-name_joint needs to be select from ['drawer', 'faucet']
-```
-def set_obj_z_position_reward(name_obj, z_height)
-```
-this term encourages the position of name_obj to be close to the height (specified by z_height).
+this term encourages the position of name_obj to be close to the specified target position.
 
 ```
 def reset_reward()
 ```
 This function resets the reward to default values.
-
-
-Example plan:
-To perform this task, the manipulator's palm should move close to object1=apple.
-object1 should be close to object2=bowl.
-object2 needs to be rotated by 30 degrees along x axis.
-object2 needs to be lifted to a height of 1.0.
 
 This is the first plan for a new task.
 
@@ -46,10 +33,10 @@ Example answer code:
 import numpy as np
 
 reset_reward() # This is a new task so reset reward; otherwise we don't need it
-set_l2_distance_reward("palm", "apple")
-set_l2_distance_reward("apple", "bowl")
-set_obj_orientation_reward("bowl", np.deg2rad(30))
-set_obj_z_position_reward("bowl", 1.0)
+set_l2_distance_reward("gripper", "apple")
+set_l2_distance_reward("apple", "box_center")
+set_obj_orientation_reward("cube", np.deg2rad(30), 0)
+set_obj_position_reward("bowl", 0, 0, 1.0)
 
 execute_plan(4)
 ```

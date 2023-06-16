@@ -1,0 +1,71 @@
+We have a description of a robot's motion and we want you to turn that into the corresponding program with following functions:
+
+```
+def set_torso_targets(target_torso_height, target_torso_pitch, target_torso_roll, target_torso_location_xy, target_torso_velocity_xy, target_torso_heading, target_turning_speed)
+```
+target_torso_height: how high the torso wants to reach. When the robot is standing on all four feet in a normal standing pose, the torso is about 0.3m high.
+target_torso_pitch: How much the torso should tilt up from a horizontal pose in radians. A positive number means robot is looking up, e.g. if the angle is 0.5*pi the robot will be looking upward, if the angel is 0, then robot will be looking forward.
+target_torso_velocity_xy: target torso moving velocity in local space, x is forward velocity, y is sideway velocity (positive means left).
+target_torso_heading: the desired direction that the robot should face towards. The value of target_torso_heading is in the range of 0 to 2*pi, where 0 and 2*pi both mean East, pi being West, etc.
+target_turning_speed: the desired turning speed of the torso in radians per second.
+Remember: 
+one of target_torso_location_xy and target_torso_velocity_xy must be None.
+one of target_torso_heading and target_turning_speed must be None.
+No other inputs can be None.
+ 
+```
+def set_feet_pos_parameters(feet_name, lift_height, extend_forward, move_inward)
+```
+feet_name is one of ('front_left', 'back_left', 'front_right', 'back_right').
+lift_height: how high should the foot be lifted in the air. If is None, disable this term. If it's set to 0, the foot will touch the ground.
+extend_forward: how much should the foot extend forward. If is None, disable this term.
+move_inward: how much should the foot move inward. If is None, disable this term.
+
+```
+def set_feet_stepping_parameters(feet_name, stepping_frequency, air_ratio, phase_offset, swing_up_down, swing_forward_back, should_activate)
+```
+feet_name is one of ('front_left', 'rear_left', 'front_right', 'rear_right').
+air_ratio (value from 0 to 1) describes how much time the foot spends in the air versus the whole gait cycle. If it's 0 the foot will always stay on ground, and if it's 1 it'll always stay in the air.
+phase_offset (value from 0 to 1) describes how the timing of the stepping motion differs between
+different feet. For example, if the phase_offset between two legs differs by 0.5, it means
+one leg will start the stepping motion in the middle of the stepping motion cycle of the other leg.
+swing_up_down is how much the foot swings vertical during the motion cycle.
+swing_forward_back is how much the foot swings horizontally during the motion cycle.
+If swing_forward_back is positive, the foot would look like it's going forward, if it's negative, the foot will look like it's going backward.
+If should_activate is False, the leg will not follow the stepping motion.
+
+```
+def execute_plan(plan_duration=2)
+```
+This function sends the parameters to the robot and execute the plan for `plan_duration` seconds, default to be 2
+
+Example answer code:
+```
+import numpy as np  # import numpy because we are using it below
+
+reset_reward() # This is a new task so reset reward; otherwise we don't need it
+set_torso_targets(0.1, np.deg2rad(5), np.deg2rad(15), (2, 3), None, None, np.deg2rad(10))
+
+set_feet_pos_parameters('front_left', 0.1, 0.1, None)
+set_feet_pos_parameters('back_left', None, None, 0.15)
+set_feet_pos_parameters('front_right', None, None, None)
+set_feet_pos_parameters('back_right', 0.0, 0.0, None)
+set_feet_stepping_parameters('front_right', 2.0, 0.5, 0.2, 0.1, -0.05, True)
+set_feet_stepping_parameters('back_left', 3.0, 0.7, 0.1, 0.1, 0.05, True)
+set_feet_stepping_parameters('front_left', 0.0, 0.0, 0.0, 0.0, 0.0, False)
+set_feet_stepping_parameters('back_right', 0.0, 0.0, 0.0, 0.0, 0.0, False)
+
+execute_plan(4)
+```
+
+Remember:
+1. Always format the code in code blocks. In your response all four functions above: set_torso_targets, set_feet_pos_parameters, execute_plan, should be called at least once.
+2. Do not invent new functions or classes. The only allowed functions you can call are the ones listed above. Do not leave unimplemented code blocks in your response.
+3. The only allowed library is numpy. Do not import or use any other library. If you use np, be sure to import numpy.
+4. If you are not sure what value to use, just use your best judge. Do not use None for anything.
+5. Do not calculate the position or direction of any object (except for the ones provided above). Just use a number directly based on your best guess.
+6. For set_torso_targets, only the last four arguments (target_torso_location_xy, target_torso_velocity_xy, target_torso_heading, target_turning_speed) can be None. Do not set None for any other arguments.
+7. Don't forget to call execute_plan at the end.
+
+If you understand, say Yes.
+

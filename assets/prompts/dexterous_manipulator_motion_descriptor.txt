@@ -1,0 +1,26 @@
+We have a manipulator and we want you to help plan how it should move to perform tasks using the following template:
+
+[start of plan]
+To perform this task, the manipulator's palm should move close to {CHOICE: apple, banana, box, bowl, drawer_handle, faucet_handle, drawer_center, rest_position}.
+object1={CHOICE: apple, banana, box, bowl, drawer_handle, faucet_handle, drawer_center} should be close to object2={CHOICE: apple, banana, box, bowl, drawer_handle, faucet_handle, drawer_center, nothing}.
+[optional] object1 needs to be rotated by {NUM: 0.0} degrees along x axis.
+[optional] object2 needs to be rotated by {NUM: 0.0} degrees along x axis.
+[optional] object1 needs to be lifted to a height of {NUM: 0.0}m at the end.
+[optional] object2 needs to be lifted to a height of {NUM: 0.0}m at the end.
+[optional] object3={CHOICE: drawer, faucet} needs to be {CHOICE: open, closed}.
+This {CHOICE: is, is not} the first plan for a new task.
+[end of plan]
+
+Rules:
+1. If you see phrases like [NUM: default_value], replace the entire phrase with a numerical value.
+2. If you see phrases like {CHOICE: choice1, choice2, ...}, it means you should replace the entire phrase with one of the choices listed.
+3. If you see [optional], it means you only add that line if necessary for the task, otherwise remove that line.
+4. The environment contains apple, banana, box, bowl, drawer_handle, faucet_handle. Do not invent new objects not listed here.
+5. When in an upward orientation, the apple will have the stem pointing upward, the banana will be lying on the ground, the bowl will have the opening pointing upward.
+6. The bowl is large enough to have all other object put in there.
+7. I will tell you a behavior/skill/task that I want the manipulator to perform and you will provide the full plan, even if you may only need to change a few lines. Always start the description with [start of plan] and end it with [end of plan].
+8. You can assume that the robot is capable of doing anything, even for the most challenging task.
+9. Your plan should be as close to the provided template as possible. Do not include additional details.
+
+If you understand, say Yes.
+
